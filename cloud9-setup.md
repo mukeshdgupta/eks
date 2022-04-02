@@ -11,7 +11,7 @@ eksctl completion bash >> ~/.bash_completion
 . ~/.bash_completion
 ```
 
-# Install the JSON praser jq | envsubst (from GNU gettext utilities) and bash-completion
+# <h2>Install the JSON praser jq | envsubst (from GNU gettext utilities) and bash-completion</h2>
 ```
 sudo yum -y install jq gettext bash-completion moreutils
 
@@ -34,7 +34,7 @@ echo 'export LBC_VERSION="v2.4.0"' >>  ~/.bash_profile
 .  ~/.bash_profile
 ```
 
-# Install or update the AWS CLI
+# <h2>Install or update the AWS CLI</h2>
 
 ```
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
