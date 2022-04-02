@@ -44,7 +44,7 @@ aws --version
 
 ```
 
-# Install kubectl
+# <h2>Install kubectl</h2>
 
 ```
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -55,12 +55,14 @@ chmod +x kubectl
 mkdir -p ~/.local/bin
 mv ./kubectl ~/.local/bin/kubectl
 ```
-# AWS managed temporary credentials:
+# <h2>AWS managed temporary credentials: </h2>
+
 ```
 aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
 rm -vf ${HOME}/.aws/credentials
 ```
-# Configure our aws cli with our current region as default.
+
+# <h2>Configure our aws cli with our current region as default.</h2>
 ```
 export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
 export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
