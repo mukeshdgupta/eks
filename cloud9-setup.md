@@ -1,4 +1,4 @@
-# Cloud9 Setup Guide
+# <h1>Cloud9 Setup Guide</h1>
 
 # <h2>Install eksctl for creating and managing your EKS cluster</h2>
 
