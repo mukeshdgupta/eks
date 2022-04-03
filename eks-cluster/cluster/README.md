@@ -42,3 +42,28 @@ echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile
 
 
 ```
+
+# <h2>EC2 Spot Instances in managed node groups </h2>
+
+```
+eksctl create managednodegroup --cluster eksworkshop-eksctl --instance-types m5.xlarge,m4.xlarge,m5a.xlarge,m5.large,m5ad.large,m5a.large --managed --spot --name spot-4vcpu-16gb --asg-access --nodes-max 10
+or 
+eksctl create managednodegroup --cluster eksworkshop-eksctl --instance-types m5ad.xlarge,m5.large,m5a.xlarge,m4.xlarge --managed --spot --name spot-4vcpu-16gb --asg-access --nodes-max 10
+kubectl get nodes --selector=eks.amazonaws.com/capacityType=SPOT
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
+kubectl edit deployment cluster-autoscaler -n kube-system
+<-- modify <YOUR CLUSTER NAME> -->
+kubectl -n kube-system logs -f deployment.apps/cluster-autoscaler
+kubectl get no -l eks.amazonaws.com/capacityType=SPOT
+kubectl delete deployment nginx-spot-demo
+
+eksctl delete nodegroup on-demand-4vcpu-16gb --cluster eks-spot-managed-node-groups
+
+eksctl delete nodegroup spot-4vcpu-16gb --cluster eks-spot-managed-node-groups
+
+eksctl delete cluster eks-spot-managed-node-groups
+
+```
+
+
+

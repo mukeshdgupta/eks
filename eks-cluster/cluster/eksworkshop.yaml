@@ -13,8 +13,7 @@ managedNodeGroups:
 - name: nodegroup
   desiredCapacity: 3
   instanceType: t2.micro
-  ssh:
-    enableSsm: true
+
 
 # To enable all of the control plane logs, uncomment below:
 cloudWatch:
